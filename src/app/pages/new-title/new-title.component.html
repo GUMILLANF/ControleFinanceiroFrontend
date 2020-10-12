@@ -1,0 +1,81 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            Criar
+          </div>
+          <div class="card-body">
+            <form #f="ngForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                  <label for="title">Titulos</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="title.title"
+                    #name="ngModel"
+                    class="form-control"
+                    id="title"
+                    required="true"
+                    name="title"
+                    autocomplete="false"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="description">Descrição</label>
+                  <input
+                    type="text"
+                    [(ngModel)]="title.description"
+                    #description="ngModel"
+                    class="form-control"
+                    id="description"
+                    required="true"
+                    name="description"
+                    autocomplete="false"
+                  />
+                </div>
+                <div class="form-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">R$</span>
+                    <span class="input-group-text">0.00</span>
+                  </div>
+                  <input type="text"         
+                  [(ngModel)]="title.value"
+                  id="value"
+                  name="value"
+                  #value="ngModel"
+                  autocomplete="false"
+                  class="form-control" aria-label="Quantia em Reais (com ponto e duas casas decimais)">
+                </div>
+                <div class="form-group">
+                  <label for="account">Conta</label>
+                  <select 
+                    class="form-control" 
+                    id="account"
+                    name="account" 
+                    [(ngModel)]="account" 
+                    required>
+                    <option *ngFor="let ac of accounts"[ngValue]="ac">
+                      {{ac.name}}
+                    </option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="category">Conta</label>
+                  <select 
+                    class="form-control" 
+                    id="category"
+                    name="category" 
+                    [(ngModel)]="category" 
+                    required>
+                    <option *ngFor="let cat of categories" [ngValue]="cat">
+                      {{cat.name}}
+                    </option>
+                  </select>
+                </div>
+                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Salvar</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

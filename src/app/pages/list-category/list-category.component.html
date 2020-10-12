@@ -1,0 +1,34 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="text-right">
+          <button type="button" class="btn btn-success" routerLink="/category/new">Novo Categoria</button>
+        </div>
+        <div class="text-center" *ngIf="!existemCategorias()">
+          Nenhuma categoria cadastrado.
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngFor="let category of categories">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <span class="badge badge-pill" 
+              [class.badge-danger]="category.type == 'P' " 
+              [class.badge-success]="category.type == 'R' ">
+              TIPO {{category.type}}
+            </span>
+          </div>
+          <div class="card-body">
+            <p class="card-text">{{category.name}}</p>
+          </div>
+          <div class="card-footer">
+            <div class="text-right">
+              <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/category/edit/{{category._id}}">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletaCategoria(category._id)">X</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

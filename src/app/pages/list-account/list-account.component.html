@@ -1,0 +1,33 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <div class="text-right">
+          <button type="button" class="btn btn-success" routerLink="/account/new">Nova Conta</button>
+        </div>
+        <div class="text-center" *ngIf="!existemContas()">
+          Nenhum conta cadastrada.
+        </div>
+      </div>
+    </div>
+    <div class="row mt-3" *ngFor="let account of accounts">
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            <span class="badge badge-pill" 
+              [class.badge-alert]="true">
+              {{account.name}}
+            </span>
+          </div>
+          <div class="card-body">
+            <p class="card-text">R$ {{account.balance}}</p>
+          </div>
+          <div class="card-footer">
+            <div class="text-right">
+              <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/account/edit/{{account._id}}">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deletaConta(account._id)">X</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
